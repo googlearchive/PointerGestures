@@ -18,7 +18,6 @@
   [
     'PointerEvents/src/pointerevents.js',
     'TkGestureEvent.js',
-    'sidetable.js',
     'initialize.js',
     'dispatcher.js',
     'hold.js',
