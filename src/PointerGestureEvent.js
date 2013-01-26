@@ -4,20 +4,20 @@
  * license that can be found in the LICENSE file.
  */
 
-function TkGestureEvent(inType, inDict) {
+function PointerGestureEvent(inType, inDict) {
   var e = document.createEvent('UIEvent');
   if (Object.__proto__) {
-    e.__proto__ = TkGestureEvent.prototype;
+    e.__proto__ = PointerGestureEvent.prototype;
     e.initGestureEvent(inType, inDict);
   } else {
-    TkGestureEvent.prototype.initGestureEvent.call(e, inType, inDict);
+    PointerGestureEvent.prototype.initGestureEvent.call(e, inType, inDict);
   }
   return e;
 }
 
-TkGestureEvent.prototype.__proto__ = UIEvent.prototype;
+PointerGestureEvent.prototype.__proto__ = UIEvent.prototype;
 
-TkGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
+PointerGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
   var props = {
     bubbles: true,
     cancelable: true,

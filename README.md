@@ -6,15 +6,12 @@ development.
 
 ## Events
 
-All events are prefixed with **tk**, to be distinct from other gesture
-libraries.
-
 Included events are:
-- `tktap` - a pointer moves down and up quickly, preventable with
-  `pointerup.preventTap`
-- `tkhold` - a pointer is held down
-- `tkholdpulse` - fires on an interval while the pointer is held down
-- `tkrelease` - a held pointer is released
+- `tap` - a pointer moves down and up quickly, preventable with
+  `<pointerevent>.preventTap`
+- `hold` - a pointer is held down
+- `holdpulse` - fires on an interval while the pointer is held down
+- `release` - a held pointer is released
 
 ## Installation
 

@@ -9,13 +9,13 @@
  * and pointercancel.
  *
  * Events fired:
- *  - tkhold: a pointer is held down and not moved for at least 200 ms.
- *  - tkholdpulse: a pointer is being held down and not moved for at least 200ms
- *  since the last tkhold or tkholdpulse event.
- *  - tkrelease: a pointer is released from being held, or moved from the hold
+ *  - hold: a pointer is held down and not moved for at least 200 ms.
+ *  - holdpulse: a pointer is being held down and not moved for at least 200ms
+ *  since the last hold or holdpulse event.
+ *  - release: a pointer is released from being held, or moved from the hold
  *  position.
  *
- * Additional Properties (on tkhold and tkholdpulse):
+ * Additional Properties (on hold and holdpulse):
  *  - holdTime: amount of time the pointer has been held down and not moved.
  */
 
@@ -36,14 +36,14 @@
     holdJob: null,
     pulse: function() {
       var hold = Date.now() - this.heldPointer.timeStamp;
-      var type = this.held ? 'tkholdpulse' : 'tkhold';
+      var type = this.held ? 'holdpulse' : 'hold';
       this.fireHold(type, {holdTime: hold});
       this.held = true;
     },
     cancel: function() {
       clearInterval(this.holdJob);
       if (this.held) {
-        this.fireHold('tkrelease');
+        this.fireHold('release');
       }
       this.held = false;
       this.heldPointer = null;

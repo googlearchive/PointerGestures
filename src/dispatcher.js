@@ -96,7 +96,7 @@
      * @return {Event} A Gesture event of type `inType`
      */
     makeEvent: function(inType, inDict) {
-      return new TkGestureEvent(inType, inDict);
+      return new PointerGestureEvent(inType, inDict);
     },
     /**
      * Returns a snapshot of inEvent, with writable properties.

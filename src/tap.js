@@ -38,7 +38,7 @@
       if (start && !inEvent.tapPrevented) {
         var t = scope.findLCA(start.target, inEvent.target);
         if (t) {
-          var e = dispatcher.makeEvent('tktap', {
+          var e = dispatcher.makeEvent('tap', {
             clientX: inEvent.clientX,
             clientY: inEvent.clientY
           });

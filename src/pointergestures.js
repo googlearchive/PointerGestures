@@ -17,7 +17,7 @@
 
   [
     'PointerEvents/src/pointerevents.js',
-    'TkGestureEvent.js',
+    'PointerGestureEvent.js',
     'initialize.js',
     'dispatcher.js',
     'hold.js',
