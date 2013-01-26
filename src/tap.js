@@ -27,7 +27,7 @@
       if (inEvent.isPrimary) {
         var start = pointermap.get(inEvent.pointerId);
         if (start) {
-          if (inEvent.preventTap) {
+          if (inEvent.tapPrevented) {
             pointermap.delete(inEvent.pointerId);
           }
         }
