@@ -22,7 +22,7 @@ PointerGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
     bubbles: true,
     cancelable: true,
     view: null,
-    detail: null,
+    detail: null
   };
 
   for (var k in inDict) {
