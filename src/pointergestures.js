@@ -21,6 +21,7 @@
     'initialize.js',
     'dispatcher.js',
     'hold.js',
+    'track.js',
     'flick.js',
     'tap.js'
   ].forEach(require);
