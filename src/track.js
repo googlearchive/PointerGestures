@@ -107,7 +107,7 @@
       }
     },
     pointercancel: function(inEvent) {
-      pointermap.delete(inEvent.pointerId);
+      this.pointerup(inEvent);
     }
   };
   dispatcher.registerRecognizer(track);
