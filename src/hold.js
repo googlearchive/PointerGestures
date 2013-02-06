@@ -37,7 +37,7 @@
     pulse: function() {
       var hold = Date.now() - this.heldPointer.timeStamp;
       var type = this.held ? 'holdpulse' : 'hold';
-      this.fireHold(type, {holdTime: hold});
+      this.fireHold(type, hold);
       this.held = true;
     },
     cancel: function() {
@@ -74,8 +74,13 @@
         }
       }
     },
-    fireHold: function(inType, inProps) {
-      var p = inProps || {};
+    fireHold: function(inType, inHoldTime) {
+      var p = {
+        pointerType: this.heldPointer.pointerType
+      };
+      if (inHoldTime) {
+        p.holdTime = inHoldTime;
+      }
       var e = dispatcher.makeEvent(inType, p);
       dispatcher.dispatchEvent(e, this.target);
     }

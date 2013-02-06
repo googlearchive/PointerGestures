@@ -88,7 +88,8 @@
           yVelocity: y,
           velocity: v,
           angle: a,
-          majorAxis: ma
+          majorAxis: ma,
+          pointerType: inEvent.pointerType
         });
         dispatcher.asyncDispatchEvent(ev, this.target);
         // prevent a tap if a flick is detected

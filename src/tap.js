@@ -40,7 +40,8 @@
         if (t) {
           var e = dispatcher.makeEvent('tap', {
             clientX: inEvent.clientX,
-            clientY: inEvent.clientY
+            clientY: inEvent.clientY,
+            pointerType: inEvent.pointerType
           });
           dispatcher.asyncDispatchEvent(e, t);
         }
