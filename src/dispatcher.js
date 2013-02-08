@@ -6,8 +6,8 @@
 
 (function(scope) {
   var dispatcher = {
-    handledEvents: new SideTable('gesture'),
-    targets: new SideTable('target'),
+    handledEvents: new scope.SideTable('gesture'),
+    targets: new scope.SideTable('target'),
     handlerQueue: {},
     events: [
       'pointerdown',

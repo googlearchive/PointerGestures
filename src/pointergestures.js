@@ -19,6 +19,8 @@
     'PointerEvents/src/pointerevents.js',
     'PointerGestureEvent.js',
     'initialize.js',
+    'sidetable.js',
+    'pointermap.js',
     'dispatcher.js',
     'hold.js',
     'track.js',

@@ -23,7 +23,7 @@
 
 (function(scope) {
   var dispatcher = scope.dispatcher;
-  var pointermap = new PointerMap;
+  var pointermap = new scope.PointerMap;
   var track = {
     events: [
       'pointerdown',
