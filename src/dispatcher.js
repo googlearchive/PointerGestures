@@ -8,7 +8,8 @@
   var dispatcher = {
     handledEvents: new scope.SideTable('gesture'),
     targets: new scope.SideTable('target'),
-    handlerQueue: {},
+    handlers: {},
+    recognizers: {},
     events: [
       'pointerdown',
       'pointermove',
@@ -24,8 +25,9 @@
      *   called 'events', and functions with the names specified in the 'events'
      *   array.
      */
-    registerRecognizer: function(inRecognizer) {
+    registerRecognizer: function(inName, inRecognizer) {
       var r = inRecognizer;
+      this.recognizers[inName] = r;
       this.events.forEach(function(e) {
         if (r[e]) {
           var f = r[e].bind(r);
@@ -35,10 +37,10 @@
     },
     addHandler: function(inEvent, inFn) {
       var e = inEvent;
-      if (!this.handlerQueue[e]) {
-        this.handlerQueue[e] = [];
+      if (!this.handlers[e]) {
+        this.handlers[e] = [];
       }
-      this.handlerQueue[e].push(inFn);
+      this.handlers[e].push(inFn);
     },
     // add event listeners for inTarget
     registerTarget: function(inTarget) {
@@ -53,20 +55,23 @@
       if (this.handledEvents.get(inEvent)) {
         return;
       }
-      var type = inEvent.type, q;
-      if (q = this.handlerQueue[type]) {
-        this.runQueue(q, inEvent);
+      var type = inEvent.type, fns;
+      if (fns = this.handlers[type]) {
+        this.makeQueue(fns, inEvent);
       }
       this.handledEvents.set(inEvent, true);
     },
-    // Run all the handlers for the gesture modules
-    runQueue: function(inQueue, inEvent) {
-      // TODO(dfreedman): query for stopPropagation instead of return true
-      for (var i = 0, f, ql = inQueue.length; (i < ql) && (f = inQueue[i]); i++) {
-        if(f(inEvent) === true) {
-          break;
-        }
+    // queue event for async dispatch
+    makeQueue: function(inHandlerFns, inEvent) {
+      setTimeout(this.runQueue.bind(this, inHandlerFns, inEvent), 0);
+    },
+    // Dispatch the queued events
+    runQueue: function(inHandlers, inEvent) {
+      this.currentPointerId = inEvent.pointerId;
+      for (var i = 0, f, l = inHandlers.length; (i < l) && (f = inHandlers[i]); i++) {
+        f(inEvent);
       }
+      this.currentPointerId = 0;
     },
     // set up event listeners
     listen: function(inEvents, inTarget) {
@@ -123,7 +128,10 @@
     dispatchEvent: function(inEvent, inTarget) {
       var t = inTarget || this.targets.get(inEvent);
       if (t) {
-        return t.dispatchEvent(inEvent);
+        t.dispatchEvent(inEvent);
+        if (inEvent.tapPrevented) {
+          this.preventTap(this.currentPointerId);
+        }
       }
     },
     asyncDispatchEvent: function(inEvent, inTarget) {
@@ -132,6 +140,12 @@
       }.bind(this);
       setTimeout(fn, 0);
     },
+    preventTap: function(inPointerId) {
+      var t = this.recognizers.tap;
+      if (t){
+        t.preventTap(inPointerId);
+      }
+    }
   };
   dispatcher.boundHandler = dispatcher.eventHandler.bind(dispatcher);
   scope.dispatcher = dispatcher;

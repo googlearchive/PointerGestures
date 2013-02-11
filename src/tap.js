@@ -43,16 +43,19 @@
             clientY: inEvent.clientY,
             pointerType: inEvent.pointerType
           });
-          dispatcher.asyncDispatchEvent(e, t);
+          dispatcher.dispatchEvent(e, t);
         }
       }
       pointermap.delete(inEvent.pointerId);
     },
     pointercancel: function(inEvent) {
       pointermap.delete(inEvent.pointerId);
-    }
+    },
+    preventTap: function(inPointerId) {
+      pointermap.delete(inPointerId);
+    },
   };
-  dispatcher.registerRecognizer(tap);
+  dispatcher.registerRecognizer('tap', tap);
 
   // make tap preventable by pointer events
   PointerEvent.prototype.preventTap = function() {

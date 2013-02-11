@@ -34,4 +34,8 @@ PointerGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
   for (var k in props) {
     this[k] = props[k];
   }
-}
+};
+
+PointerGestureEvent.prototype.preventTap = function() {
+  this.tapPrevented = true;
+};

@@ -83,7 +83,10 @@
       }
       var e = dispatcher.makeEvent(inType, p);
       dispatcher.dispatchEvent(e, this.target);
+      if (e.tapPrevented) {
+        dispatcher.preventTap(this.heldPointer.pointerId);
+      }
     }
   };
-  dispatcher.registerRecognizer(hold);
+  dispatcher.registerRecognizer('hold', hold);
 })(window.__PointerGestureShim__);

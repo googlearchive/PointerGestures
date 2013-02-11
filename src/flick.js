@@ -91,14 +91,12 @@
           majorAxis: ma,
           pointerType: inEvent.pointerType
         });
-        dispatcher.asyncDispatchEvent(ev, this.target);
-        // prevent a tap if a flick is detected
-        inEvent.preventTap();
+        dispatcher.dispatchEvent(ev, this.target);
       }
     },
     calcAngle: function(inX, inY) {
       return (Math.atan2(inY, inX) * 180 / Math.PI);
     }
   };
-  dispatcher.registerRecognizer(flick);
+  dispatcher.registerRecognizer('flick', flick);
 })(window.__PointerGestureShim__);

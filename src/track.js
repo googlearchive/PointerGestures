@@ -110,5 +110,5 @@
       this.pointerup(inEvent);
     }
   };
-  dispatcher.registerRecognizer(track);
+  dispatcher.registerRecognizer('track', track);
 })(window.__PointerGestureShim__);
