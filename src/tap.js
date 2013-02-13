@@ -56,9 +56,4 @@
     },
   };
   dispatcher.registerRecognizer('tap', tap);
-
-  // make tap preventable by pointer events
-  PointerEvent.prototype.preventTap = function() {
-    this.tapPrevented = true;
-  };
 })(window.__PointerGestureShim__);
