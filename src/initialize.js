@@ -6,21 +6,6 @@
 
 (function(scope) {
   scope = scope || {};
-  // Function bind is required for dispatcher
-  if (!Function.prototype.bind) {
-    Function.prototype.bind = function(inScope/*, ...arguments*/) {
-      var args = scope.toArray(arguments, 1);
-      var self = this;
-      return function() {
-        var newArgs = scope.toArray(arguments, 0);
-        return self.apply(inScope, args.concat(newArgs));
-      };
-    };
-  }
-  // not bound because scope.toArray is used in scope.bind
-  scope.toArray = function(inArgs, inStart) {
-    return Array.prototype.slice.call(inArgs, inStart || 0);
-  };
   scope.utils = {
     LCA: {
       find: function(a, b) {
