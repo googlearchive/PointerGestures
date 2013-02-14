@@ -4,6 +4,30 @@
  * license that can be found in the LICENSE file.
  */
 
+/**
+ * The recognizer for {{#crossLink
+ * "PointerGestureEvent/tap:event"}}{{/crossLink}} events.
+ *
+ * @class PointerGestureScope.tap
+ * @static
+ */
+
+/**
+ * This event is fired when a pointer quickly goes down and up, and is used to
+ * denote activation.
+ *
+ * Any gesture event can prevent the tap event from being created by calling
+ * `event.preventTap`.
+ *
+ * Any pointer event can prevent the tap by setting the `tapPrevented` property
+ * on itself.
+ *
+ * @for PointerGestureEvent
+ * @event tap
+ * @param x {Number} X axis position of the tap.
+ * @param y {Number} Y axis position of the tap.
+ * @param pointerType {String} Type of the pointer that made the tap.
+ */
 (function(scope) {
   var dispatcher = scope.dispatcher;
   var pointermap = new scope.PointerMap;
@@ -39,8 +63,8 @@
         var t = scope.findLCA(start.target, inEvent.target);
         if (t) {
           var e = dispatcher.makeEvent('tap', {
-            clientX: inEvent.clientX,
-            clientY: inEvent.clientY,
+            x: inEvent.clientX,
+            y: inEvent.clientY,
             pointerType: inEvent.pointerType
           });
           dispatcher.dispatchEvent(e, t);
