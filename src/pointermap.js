@@ -4,20 +4,20 @@
  * license that can be found in the LICENSE file.
  */
 
-/**
- * This module implements an ordered list of pointer states
- * Each pointer object here has two properties:
- *  - id: the id of the pointer
- *  - event: the source event of the pointer, complete with positions
- *
- * The ordering of the pointers is from oldest pointer to youngest pointer,
- * which allows for multi-pointer gestures to not rely on the actual ids
- * imported from the source events.
- *
- * Any operation that needs to store state information about pointers can hang
- * objects off of the pointer in the pointermap. This information will be
- * preserved until the pointer is removed from the pointermap.
- */
+// This module implements an ordered list of pointer states.
+//
+// Each pointer object here has two properties:
+//   - id: the id of the pointer
+//   - event: the source event of the pointer, complete with positions
+//
+// The ordering of the pointers is from oldest pointer to youngest pointer,
+// which allows for multi-pointer gestures to not rely on the actual ids
+// imported from the source events.
+//
+// Any operation that needs to store state information about pointers can hang
+// objects off of the pointer in the pointermap. This information will be
+// preserved until the pointer is removed from the pointermap.
+
 (function(scope) {
   function PointerMap() {
     this.ids = [];

@@ -5,14 +5,6 @@
  */
 
 /**
- * The recognizer for {{#crossLink
- * "PointerGestureEvent/tap:event"}}{{/crossLink}} events.
- *
- * @class PointerGestureScope.tap
- * @static
- */
-
-/**
  * This event is fired when a pointer quickly goes down and up, and is used to
  * denote activation.
  *
@@ -22,11 +14,11 @@
  * Any pointer event can prevent the tap by setting the `tapPrevented` property
  * on itself.
  *
- * @for PointerGestureEvent
+ * @for Events
  * @event tap
- * @param x {Number} X axis position of the tap.
- * @param y {Number} Y axis position of the tap.
- * @param pointerType {String} Type of the pointer that made the tap.
+ * @param {Number} x X axis position of the tap.
+ * @param {Number} y Y axis position of the tap.
+ * @param {String} pointerType Type of the pointer that made the tap.
  */
 (function(scope) {
   var dispatcher = scope.dispatcher;

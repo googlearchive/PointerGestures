@@ -5,20 +5,47 @@
  */
 
 /**
- * This module produces tracking events from pointerup and pointerdown
- * Events fired:
- *  - tackstart: primary pointer is added
- *  - track: primary pointer is moving
- *  - trackend: primary pointer is removed
- *    - Additional Properties:
- *      - dx: movement in the x direction since tktrackstart
- *      - dy: movement in the y direction since tktrackstart
- *      - ddx: movement in the x direction since the last tktrack
- *      - ddy: movement in the y direction since the last tktrack
- *      - xDirection: The last x axis movement direction of the pointer
- *      - yDirection: The last y axis movement direction of the pointer
- *      - trackInfo: A shared object between all tracking events
- *      - pointerType: The type of pointer that created this gesture
+ * This event denotes the beginning of a series of tracking events.
+ *
+ * @for Events
+ * @event trackstart
+ * @param {Number} dx Pixels moved in the x direction since trackstart.
+ * @param {Number} dy Pixes moved in the y direction since trackstart.
+ * @param {Number} ddx Pixels moved in the x direction since the last track.
+ * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} xDirection The last x axis direction of the pointer.
+ * @param {Number} yDirection The last y axis direction of the pointer.
+ * @param {Object} trackInfo A shared object between all tracking events.
+ * @param {String} pointerType The type of pointer that make the track gesture.
+ */
+/**
+ *
+ * This event fires for all pointer movement being tracked.
+ *
+ * @for Events
+ * @event track
+ * @param {Number} dx Pixels moved in the x direction since trackstart.
+ * @param {Number} dy Pixes moved in the y direction since trackstart.
+ * @param {Number} ddx Pixels moved in the x direction since the last track.
+ * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} xDirection The last x axis direction of the pointer.
+ * @param {Number} yDirection The last y axis direction of the pointer.
+ * @param {Object} trackInfo A shared object between all tracking events.
+ * @param {String} pointerType The type of pointer that make the track gesture.
+ */
+/**
+ * This event fires when the pointer is no longer being tracked.
+ *
+ * @for Events
+ * @event trackend
+ * @param {Number} dx Pixels moved in the x direction since trackstart.
+ * @param {Number} dy Pixes moved in the y direction since trackstart.
+ * @param {Number} ddx Pixels moved in the x direction since the last track.
+ * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} xDirection The last x axis direction of the pointer.
+ * @param {Number} yDirection The last y axis direction of the pointer.
+ * @param {Object} trackInfo A shared object between all tracking events.
+ * @param {String} pointerType The type of pointer that make the track gesture.
  */
 
 (function(scope) {

@@ -5,18 +5,27 @@
  */
 
 /**
- * This module produces hold events from pointerup, pointermove, pointerdown,
- * and pointercancel.
+ * This event is fired when a pointer is held down for 200ms.
  *
- * Events fired:
- *  - hold: a pointer is held down and not moved for at least 200 ms.
- *  - holdpulse: a pointer is being held down and not moved for at least 200ms
- *  since the last hold or holdpulse event.
- *  - release: a pointer is released from being held, or moved from the hold
- *  position.
+ * @for Events
+ * @event hold
+ * @param {Number} holdTime Milliseconds pointer has been held down.
+ * @param {String} pointerType Type of pointer that made the holding event.
+ */
+/**
+ * This event is fired every 200ms while a pointer is held down.
  *
- * Additional Properties (on hold and holdpulse):
- *  - holdTime: amount of time the pointer has been held down and not moved.
+ * @for Events
+ * @event holdpulse
+ * @param {Number} holdTime Milliseconds pointer has been held down.
+ * @param {String} pointerType Type of pointer that made the holding event.
+ */
+/**
+ * This event is fired when a held pointer is released or moved.
+ *
+ * @for Events
+ * @event released
+ * @param {String} pointerType Type of pointer that made the holding event.
  */
 
 (function(scope) {

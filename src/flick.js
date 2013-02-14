@@ -5,18 +5,20 @@
  */
 
 /**
- * This module produces pointerflick events from pointerup and pointerdown
- * Events fired:
- *  - flick: a pointer is placed down, moves rapidly, and is then
- *  removed.
- *    - Additional Properties:
- *      - xVelocity: signed velocity of the flick in the x direction
- *      - yVelocity: signed velocity of the flick in the y direction
- *      - velocity: unsigned total velocity of the flick
- *      - angle: angle of the flick in degress, where 0 is along the positive
- *        x axis
- *      - majorAxis: Axis with the greatest absolute velocity. Denoted with
- *        'x' or 'y'
+ * This event denotes a rapid down/move/up sequence from a pointer.
+ *
+ * The event is sent to the first element the pointer went down on.
+ *
+ * @for Events
+ * @event flick
+ * @param {Number} xVelocity Signed velocity of the flick in the x direction.
+ * @param {Number} yVelocity Signed velocity of the flick in the y direction.
+ * @param {Number} velocity Unsigned total velocity of the flick.
+ * @param {Number} angle Angle of the flick in degrees, with 0 along the
+ * positive x axis.
+ * @param {String} majorAxis Axis with the greatest absolute velocity. Denoted
+ * with 'x' or 'y'.
+ * @param {String} pointerType Type of the pointer that made the flick.
  */
 
 (function(scope) {

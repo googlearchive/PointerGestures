@@ -4,6 +4,16 @@
  * license that can be found in the LICENSE file.
  */
 
+/**
+ * PointerGestureEvent is the constructor for all PointerGesture events.
+ *
+ * @class PointerGestureEvent
+ * @extends UIEvent
+ * @constructor
+ * @param {String} inType Event type
+ * @param {Object} [inDict] Dictionary of properties to initialize on the event
+ */
+
 function PointerGestureEvent(inType, inDict) {
   var e = document.createEvent('UIEvent');
   if (Object.__proto__) {
@@ -15,8 +25,16 @@ function PointerGestureEvent(inType, inDict) {
   return e;
 }
 
-PointerGestureEvent.prototype.__proto__ = UIEvent.prototype;
+PointerGestureEvent.prototype = Object.create(UIEvent.prototype);
 
+/**
+ * Initialize the PointerGestureEvent with an event type, and a dictionary of
+ * properties to set.
+ *
+ * @method initGestureEvent
+ * @param {String} inType Event type
+ * @param {Object} [inDict] Dictionary of properties to initialize on the event
+ */
 PointerGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
   var props = {
     bubbles: true,
@@ -35,7 +53,12 @@ PointerGestureEvent.prototype.initGestureEvent = function(inType, inDict) {
     this[k] = props[k];
   }
 };
-
+/**
+ * Allows for any gesture to prevent the tap gesture.
+ *
+ * @method preventTap
+ */
 PointerGestureEvent.prototype.preventTap = function() {
   this.tapPrevented = true;
 };
+

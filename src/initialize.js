@@ -5,9 +5,17 @@
  */
 
 (function(scope) {
+  /**
+   * This class contains the gesture recognizers that create the PointerGesture
+   * events.
+   *
+   * @class __PointerGestureShim__
+   * @static
+   */
   scope = scope || {};
   scope.utils = {
     LCA: {
+      // Determines the lowest node in the ancestor chain of a and b
       find: function(a, b) {
         if (a === b) {
           return a;
