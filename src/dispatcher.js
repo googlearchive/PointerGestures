@@ -63,7 +63,10 @@
     },
     // queue event for async dispatch
     makeQueue: function(inHandlerFns, inEvent) {
-      setTimeout(this.runQueue.bind(this, inHandlerFns, inEvent), 0);
+      // must clone events to keep the (possibly shadowed) target correct for
+      // async dispatching
+      var e = this.cloneEvent(inEvent);
+      setTimeout(this.runQueue.bind(this, inHandlerFns, e), 0);
     },
     // Dispatch the queued events
     runQueue: function(inHandlers, inEvent) {
