@@ -138,4 +138,4 @@
     }
   };
   dispatcher.registerRecognizer('track', track);
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);

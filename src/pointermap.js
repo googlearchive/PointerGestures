@@ -56,4 +56,4 @@
     }
   };
   scope.PointerMap = PointerMap;
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);

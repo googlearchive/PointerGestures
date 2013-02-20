@@ -9,7 +9,7 @@
    * This class contains the gesture recognizers that create the PointerGesture
    * events.
    *
-   * @class __PointerGestureShim__
+   * @class PointerGestures
    * @static
    */
   scope = scope || {};
@@ -65,5 +65,5 @@
   scope.findLCA = function(a, b) {
     return scope.utils.LCA.find(a, b);
   }
-  window.__PointerGestureShim__ = scope;
-})(window.__PointerGestureShim__);
+  window.PointerGestures = scope;
+})(window.PointerGestures);

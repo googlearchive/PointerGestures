@@ -25,4 +25,4 @@
     }
   }
   scope.SideTable = SideTable;
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);

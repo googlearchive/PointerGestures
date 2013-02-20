@@ -101,4 +101,4 @@
     }
   };
   dispatcher.registerRecognizer('flick', flick);
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);

@@ -72,4 +72,4 @@
     },
   };
   dispatcher.registerRecognizer('tap', tap);
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);

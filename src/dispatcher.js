@@ -139,7 +139,7 @@
    * Enable gesture events for a given scope, typically
    * [ShadowRoots](https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html#shadow-root-object).
    *
-   * @for __PointerGestureShim__
+   * @for PointerGestures
    * @method register
    * @param {ShadowRoot} inScope A top level scope to enable gesture
    * support on.
@@ -152,4 +152,4 @@
     scope.dispatcher.registerTarget(inScope);
   };
   dispatcher.registerTarget(document);
-})(window.__PointerGestureShim__);
+})(window.PointerGestures);
