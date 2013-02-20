@@ -145,7 +145,7 @@
    * support on.
    */
   scope.register = function(inScope) {
-    var pe = window.__PointerEventShim__;
+    var pe = window.PointerEventsPolyfill;
     if (pe) {
       pe.register(inScope);
     }
