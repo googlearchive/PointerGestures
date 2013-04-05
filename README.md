@@ -12,6 +12,13 @@ Included events are:
 - `hold` - a pointer is held down
 - `holdpulse` - fires on an interval while the pointer is held down
 - `release` - a held pointer is released
+- `flick` - a primary pointer moved quickly across the screen, and was released
+- `trackstart` - a primary pointer has started moving away from it's inital
+  start point
+- `track` - a primary pointer continues to move, targets the element that
+  received `trackstart`
+- `trackend` - a primary pointer has been released, targets the element that
+  received `trackstart`
 
 ## Installation
 
