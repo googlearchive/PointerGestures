@@ -65,7 +65,7 @@
     },
     addMove: function(inEvent) {
       if (this.moveQueue.length >= this.MAX_QUEUE) {
-        this.moveQueue.unshift();
+        this.moveQueue.shift();
       }
       this.moveQueue.push(inEvent);
     },
