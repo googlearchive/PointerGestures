@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.initConfig({
     uglify: {
@@ -33,7 +34,8 @@ module.exports = function(grunt) {
           'src/tap.js'
         ]
       }
-    }
+    },
+    clean: ['build', 'docs']
   });
 
   grunt.registerTask('default', 'uglify');
