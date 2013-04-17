@@ -5,7 +5,7 @@
   "main": "Gruntfile.js",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-yuidoc": "*",
     "grunt-contrib-clean": "*",
