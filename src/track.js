@@ -80,7 +80,7 @@
       if (dd.y) {
         t.yDirection = this.clampDir(dd.y);
       }
-      var e = dispatcher.makeEvent(inType, {
+      var trackData = {
         dx: d.x,
         dy: d.y,
         ddx: dd.x,
@@ -89,7 +89,13 @@
         yDirection: t.yDirection,
         trackInfo: t.trackInfo,
         pointerType: inEvent.pointerType
-      });
+      };
+      if (inType === 'trackend') {
+        // TODO(dfreedman): this will leak shadowdom targets, replace with a
+        // more sophisticated mechanism
+        trackData._releaseTarget = inEvent.target;
+      }
+      var e = dispatcher.makeEvent(inType, trackData);
       t.lastMoveEvent = inEvent;
       dispatcher.dispatchEvent(e, t.downTarget);
     },
