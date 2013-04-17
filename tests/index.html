@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PointerGesture tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/chai-spies/chai-spies.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../src/pointergestures.js"></script>
+</head>
+<body>
+  <div id="target" touch-action="none"></div>
+  <div id="mocha"></div>
+  <script>
+    var expect = chai.expect;
+    chai.Assertion.includeStack = true;
+    mocha.reporter('html');
+    mocha.setup('tdd');
+    var target = document.querySelector('#target');
+    function prepare(el, type, cb) {
+      var f = function() {
+        el.removeEventListener(type, arguments.callee);
+        cb();
+      }
+      el.addEventListener(type, f);
+    }
+  </script>
+  <!-- tests -->
+  <script src="tap.js"></script>
+  <!-- run -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

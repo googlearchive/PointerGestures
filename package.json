@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "description": "Rich gestures that work on both desktop and mobile",
   "main": "Gruntfile.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-yuidoc": "*",
-    "grunt-contrib-clean": "*"
+    "grunt-contrib-clean": "*",
+    "chai-spies": "*",
+    "chai": "*",
+    "mocha": "*",
+    "grunt-karma": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
