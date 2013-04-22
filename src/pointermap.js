@@ -48,12 +48,17 @@
       var i = this.ids.indexOf(inId);
       return this.pointers[i];
     },
-    item: function(inIndex) {
-      return this.pointers[inIndex];
-    },
     get size() {
       return this.pointers.length;
+    },
+    clear: function() {
+      this.ids.length = 0;
+      this.pointers.length = 0;
     }
   };
+
+  if (window.Map) {
+    PointerMap = window.Map;
+  }
   scope.PointerMap = PointerMap;
 })(window.PointerGestures);
