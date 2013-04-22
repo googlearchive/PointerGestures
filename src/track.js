@@ -13,6 +13,12 @@
  * @param {Number} dy Pixes moved in the y direction since trackstart.
  * @param {Number} ddx Pixels moved in the x direction since the last track.
  * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} clientX The clientX position of the track gesture.
+ * @param {Number} clientY The clientY position of the track gesture.
+ * @param {Number} pageX The pageX position of the track gesture.
+ * @param {Number} pageY The pageY position of the track gesture.
+ * @param {Number} screenX The screenX position of the track gesture.
+ * @param {Number} screenY The screenY position of the track gesture.
  * @param {Number} xDirection The last x axis direction of the pointer.
  * @param {Number} yDirection The last y axis direction of the pointer.
  * @param {Object} trackInfo A shared object between all tracking events.
@@ -28,6 +34,12 @@
  * @param {Number} dy Pixes moved in the y direction since trackstart.
  * @param {Number} ddx Pixels moved in the x direction since the last track.
  * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} clientX The clientX position of the track gesture.
+ * @param {Number} clientY The clientY position of the track gesture.
+ * @param {Number} pageX The pageX position of the track gesture.
+ * @param {Number} pageY The pageY position of the track gesture.
+ * @param {Number} screenX The screenX position of the track gesture.
+ * @param {Number} screenY The screenY position of the track gesture.
  * @param {Number} xDirection The last x axis direction of the pointer.
  * @param {Number} yDirection The last y axis direction of the pointer.
  * @param {Object} trackInfo A shared object between all tracking events.
@@ -42,6 +54,12 @@
  * @param {Number} dy Pixes moved in the y direction since trackstart.
  * @param {Number} ddx Pixels moved in the x direction since the last track.
  * @param {Number} ddy Pixles moved in the y direction since the last track.
+ * @param {Number} clientX The clientX position of the track gesture.
+ * @param {Number} clientY The clientY position of the track gesture.
+ * @param {Number} pageX The pageX position of the track gesture.
+ * @param {Number} pageY The pageY position of the track gesture.
+ * @param {Number} screenX The screenX position of the track gesture.
+ * @param {Number} screenY The screenY position of the track gesture.
  * @param {Number} xDirection The last x axis direction of the pointer.
  * @param {Number} yDirection The last y axis direction of the pointer.
  * @param {Object} trackInfo A shared object between all tracking events.
@@ -65,8 +83,8 @@
     calcPositionDelta: function(inA, inB) {
       var x = 0, y = 0;
       if (inA && inB) {
-        x = inB.clientX - inA.clientX;
-        y = inB.clientY - inA.clientY;
+        x = inB.pageX - inA.pageX;
+        y = inB.pageY - inA.pageY;
       }
       return {x: x, y: y};
     },
@@ -85,6 +103,12 @@
         dy: d.y,
         ddx: dd.x,
         ddy: dd.y,
+        clientX: inEvent.clientX,
+        clientY: inEvent.clientY,
+        pageX: inEvent.pageX,
+        pageY: inEvent.pageY,
+        screenX: inEvent.screenX,
+        screenY: inEvent.screenY,
         xDirection: t.xDirection,
         yDirection: t.yDirection,
         trackInfo: t.trackInfo,
