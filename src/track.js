@@ -124,7 +124,7 @@
       dispatcher.dispatchEvent(e, t.downTarget);
     },
     pointerdown: function(inEvent) {
-      if (inEvent.isPrimary && inEvent.button === 0) {
+      if (inEvent.isPrimary && inEvent.buttons === 1) {
         var p = {
           downEvent: inEvent,
           downTarget: inEvent.target,
