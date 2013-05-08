@@ -124,7 +124,7 @@
       dispatcher.dispatchEvent(e, t.downTarget);
     },
     pointerdown: function(inEvent) {
-      if (inEvent.isPrimary && inEvent.buttons === 1) {
+      if (inEvent.isPrimary && (inEvent.pointerType === 'mouse' ? inEvent.buttons === 1 : true)) {
         var p = {
           downEvent: inEvent,
           downTarget: inEvent.target,
