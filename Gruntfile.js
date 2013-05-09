@@ -13,13 +13,13 @@ module.exports = function(grunt) {
         dest: 'build/pointergestures.js',
         src: [
           // PointerEvents
+          'src/PointerEvents/src/boot.js',
           'src/PointerEvents/src/touch-action.js',
           'src/PointerEvents/src/PointerEvent.js',
           'src/PointerEvents/src/pointermap.js',
           'src/PointerEvents/src/sidetable.js',
           'src/PointerEvents/src/dispatcher.js',
           'src/PointerEvents/src/installer.js',
-          'src/PointerEvents/src/findTarget.js',
           'src/PointerEvents/src/platform-events.js',
           'src/PointerEvents/src/capture.js',
           // PointerGestures
