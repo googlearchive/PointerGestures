@@ -21,15 +21,12 @@
           return a;
         }
         // fast case, a is a direct descendant of b or vice versa
-        if (a.compareDocumentPosition) {
-          var posmap = a.compareDocumentPosition(b);
-          // b contains a
-          if (posmap & Node.DOCUMENT_POSITION_CONTAINS) {
-            return b;
-          }
-          // b is contained by a
-          if (posmap & Node.DOCUMENT_POSITION_CONTAINED_BY) {
+        if (a.contains) {
+          if (a.contains(b)) {
             return a;
+          }
+          if (b.contains(a)) {
+            return b;
           }
         }
         var adepth = this.depth(a);
