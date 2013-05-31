@@ -5,23 +5,26 @@
   "main": "Gruntfile.js",
   "dependencies": {},
   "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "chai-spies": "*",
     "grunt": "*",
+    "grunt-contrib-clean": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-yuidoc": "*",
-    "grunt-contrib-clean": "*",
-    "chai-spies": "*",
-    "chai": "*",
-    "mocha": "*",
-    "grunt-karma": "*"
+    "karma-mocha": "*",
+    "karma-script-launcher": "*",
+    "karma-crbot-reporter": "*",
+    "grunt-karma-0.9.1": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/toolkitchen/PointerGestures.git"
   },
-  "author": "",
+  "author": "Polymer Authors",
   "license": "BSD",
   "gitHead": "bc6f2eb688f6139c45a7a445e9cfb62d39c6c540",
   "readmeFilename": "README.md"

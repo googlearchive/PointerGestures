@@ -1,3 +1,6 @@
 [submodule "src/PointerEvents"]
 	path = src/PointerEvents
 	url = https://github.com/Polymer/PointerEvents.git
+[submodule "buildbot"]
+	path = buildbot
+	url = git://github.com/Polymer/buildbot.git
