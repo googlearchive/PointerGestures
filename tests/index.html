@@ -10,21 +10,13 @@
   <script src="../src/pointergestures.js"></script>
 </head>
 <body>
-  <div id="target" touch-action="none"></div>
   <div id="mocha"></div>
+  <script src="setup.js"></script>
   <script>
-    var expect = chai.expect;
-    chai.Assertion.includeStack = true;
-    mocha.reporter('html');
-    mocha.setup('tdd');
-    var target = document.querySelector('#target');
-    function prepare(el, type, cb) {
-      var f = function() {
-        el.removeEventListener(type, arguments.callee);
-        cb();
-      }
-      el.addEventListener(type, f);
-    }
+    mocha.setup({
+      ui: 'tdd',
+      slow: 1000
+    });
   </script>
   <!-- tests -->
   <script src="tap.js"></script>
