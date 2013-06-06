@@ -19,15 +19,14 @@
   }
 
   [
-    'PointerEvents/src/pointerevents.js',
-    'PointerGestureEvent.js',
-    'initialize.js',
-    'sidetable.js',
-    'pointermap.js',
-    'dispatcher.js',
-    'hold.js',
-    'track.js',
-    'flick.js',
-    'tap.js'
+    'src/PointerGestureEvent.js',
+    'src/initialize.js',
+    'src/sidetable.js',
+    'src/pointermap.js',
+    'src/dispatcher.js',
+    'src/hold.js',
+    'src/track.js',
+    'src/flick.js',
+    'src/tap.js'
   ].forEach(require);
 })();
