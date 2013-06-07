@@ -18,6 +18,10 @@
     libLocation = s.src.slice(0, -thisFile.length);
   }
 
+  if (!window.PointerEvent) {
+    require('../PointerEvents/pointerevents.js');
+  }
+
   [
     'src/PointerGestureEvent.js',
     'src/initialize.js',
