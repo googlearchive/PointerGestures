@@ -8,21 +8,8 @@
  */
 (function() {
   var thisFile = 'pointergestures.js';
-  var libLocation = '';
-  var require = function(inSrc) {
-    document.write('<script src="' + libLocation + inSrc + '"></script>');
-  };
-
-  var s = document.querySelector('script[src $= "' + thisFile + '"]');
-  if (s) {
-    libLocation = s.src.slice(0, -thisFile.length);
-  }
-
-  if (!window.PointerEvent) {
-    require('../PointerEvents/pointerevents.js');
-  }
-
-  [
+  var scopeName = 'PointerGestures';
+  var modules = [
     'src/PointerGestureEvent.js',
     'src/initialize.js',
     'src/sidetable.js',
@@ -32,5 +19,24 @@
     'src/track.js',
     'src/flick.js',
     'src/tap.js'
-  ].forEach(require);
+  ];
+
+  window[scopeName] = {
+    entryPointName: thisFile,
+    modules: modules
+  };
+
+  var script = document.querySelector('script[src $= "' + thisFile + '"]');
+  var src = script.attributes.src.value;
+  var basePath = src.slice(0, src.indexOf(thisFile));
+
+  if (!window.PointerEventPolyfill) {
+    document.write('<script src="' + basePath + '../PointerEvents/pointerevents.js"></script>');
+  }
+
+  if (!window.Loader) {
+    var path = basePath + 'tools/loader/loader.js';
+    document.write('<script src="' + path + '"></script>');
+  }
+  document.write('<script>Loader.load("' + scopeName + '")</script>');
 })();
