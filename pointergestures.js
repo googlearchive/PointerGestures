@@ -30,7 +30,7 @@
   var src = script.attributes.src.value;
   var basePath = src.slice(0, src.indexOf(thisFile));
 
-  if (!window.PointerEventPolyfill) {
+  if (!window.PointerEvent) {
     document.write('<script src="' + basePath + '../PointerEvents/pointerevents.js"></script>');
   }
 
