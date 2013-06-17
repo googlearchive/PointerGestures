@@ -22,11 +22,8 @@ Included events are:
 
 ## Installation
 
-1. Check out the submodule for PointerEvents, and PointerEvents' necessary
-submodules. (`git submodule update --init --recursive`).
+1. Install the [PointerEvents polyfill](http://github.com/Polymer/PointerEvents) as a sibling to PointerGestures
 
-2. Include PointerGestures/src/pointergestures in your page.
+2. Include `PointerGestures/pointergestures.js` in your page.
 
-3. PointerGestures will automatically include PointerEvents.
-
-4. Set the `touch-action` of a few elements and see the events fire!
+3. Set the `touch-action` of a few elements and see the events fire!
