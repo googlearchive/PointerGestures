@@ -16,22 +16,11 @@ module.exports = function(grunt) {
     uglify: {
       pointergestures: {
         options: {
-          sourceMap: 'build/pointergestures.js.map',
-          sourceMappingURL: 'pointergestures.js.map',
-          sourceMapRoot: '..'
+          banner: grunt.file.read('LICENSE'),
+          sourceMap: 'pointergestures.js.map',
         },
-        dest: 'build/pointergestures.js',
-        src: [
-          'src/PointerGestureEvent.js',
-          'src/initialize.js',
-          'src/sidetable.js',
-          'src/pointermap.js',
-          'src/dispatcher.js',
-          'src/hold.js',
-          'src/track.js',
-          'src/flick.js',
-          'src/tap.js'
-        ]
+        dest: 'pointergestures.min.js',
+        src: grunt.file.readJSON('build.json')
       }
     },
     karma: {
