@@ -57,6 +57,7 @@
           var e = dispatcher.makeEvent('tap', {
             x: inEvent.clientX,
             y: inEvent.clientY,
+            detail: inEvent.detail,
             pointerType: inEvent.pointerType
           });
           dispatcher.dispatchEvent(e, t);
@@ -69,7 +70,7 @@
     },
     preventTap: function(inPointerId) {
       pointermap.delete(inPointerId);
-    },
+    }
   };
   dispatcher.registerRecognizer('tap', tap);
 })(window.PointerGestures);
