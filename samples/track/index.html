@@ -2,77 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Track sample</title>
-  <script src="../../pointergestures.js"></script>
+  <title>PointerGestures Delta Tracking</title>
   <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-    }
-    .container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-    }
-    .container > * {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1 auto;
-      -ms-flex: 1 auto;
-      flex: 1 auto;
-    }
-    .row {
-      -webkit-box-orient: horizontal;
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-    }
-    .column {
-      -webkit-box-orient: vertical;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-    }
-    #host {
+    html, body {
       height: 100%;
       width: 100%;
+      margin: 0;
+      background: whitesmoke;
+    }
+    #real {
+      background: black;
+      z-index: 1;
+    }
+    #ghost {
+      background: gray;
+      pointer-events: none;
+    }
+    #ghostghost {
+      background: lightgray;
+      pointer-events: none;
+    }
+    div {
       -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    #upleft {
-      background: #4285f4;
-    }
-    #upright {
-      background: #db4437;
-    }
-    #downleft {
-      background: #f4b400;
-    }
-    #downright {
-      background: #0f9d58;
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
   </style>
+  <script src="../../pointergestures.js"></script>
 </head>
-<body>
-  <div id="host" class="container column" touch-action="none">
-    <div id="up" class="container row">
-      <div id="upleft"></div>
-      <div id="upright"></div>
-    </div>
-    <div id="down" class="container row">
-      <div id="downleft"></div>
-      <div id="downright"></div>
-    </div>
-  </div>
+<body touch-action="none">
+
+  <div id="real"></div>
+  <div id="ghost"></div>
+  <div id="ghostghost"></div>
+
   <script>
-    function log(e) {
-      console.log(e.type, e);
+    function translate(el, x, y) {
+      x = Math.max(0, x - 50); y = Math.max(0, y - 50);
+      el.style.transfomrm = el.style.webkitTransform = 'translateX(' + x + 'px) translateY(' + y + 'px)';
     }
-    var host = document.querySelector('#host');
-    host.addEventListener('trackstart', function(e){ e.trackInfo.foo = 1 });
-    [ 'trackstart', 'track', 'trackend' ].forEach(function(t) {
-      host.addEventListener(t, log);
+    real.addEventListener('track', function(e) {
+      requestAnimationFrame(function() {
+        translate(real, e.clientX, e.clientY);
+        translate(ghost, e.clientX - e.ddx, e.clientY - e.ddy);
+        translate(ghostghost, e.clientX - e.dx, e.clientY - e.dy);
+      });
     });
   </script>
 </body>
