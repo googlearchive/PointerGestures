@@ -51,8 +51,7 @@
         return;
       }
       var type = inEvent.type, fns;
-      // only trigger gestures if the pointer is down
-      if (inEvent.pressure && (fns = this.handlers[type])) {
+      if (fns = this.handlers[type]) {
         this.makeQueue(fns, inEvent);
       }
       this.handledEvents.set(inEvent, true);
