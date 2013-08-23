@@ -10,21 +10,15 @@
     targets: new scope.SideTable,
     handlers: {},
     recognizers: {},
-    events: [
-      'pointerdown',
-      'pointermove',
-      'pointerup',
-      'pointerover',
-      'pointerout',
-      'pointercancel'
-    ],
+    events: {},
     // Add a new gesture recognizer to the event listeners.
     // Recognizer needs an `events` property.
     registerRecognizer: function(inName, inRecognizer) {
       var r = inRecognizer;
       this.recognizers[inName] = r;
-      this.events.forEach(function(e) {
+      r.events.forEach(function(e) {
         if (r[e]) {
+          this.events[e] = true;
           var f = r[e].bind(r);
           this.addHandler(e, f);
         }
@@ -39,19 +33,19 @@
     },
     // add event listeners for inTarget
     registerTarget: function(inTarget) {
-      this.listen(this.events, inTarget);
+      this.listen(Object.keys(this.events), inTarget);
     },
     // remove event listeners for inTarget
     unregisterTarget: function(inTarget) {
-      this.unlisten(this.events, inTarget);
+      this.unlisten(Object.keys(this.events), inTarget);
     },
     // LISTENER LOGIC
     eventHandler: function(inEvent) {
       if (this.handledEvents.get(inEvent)) {
         return;
       }
-      var type = inEvent.type, fns;
-      if (fns = this.handlers[type]) {
+      var type = inEvent.type, fns = this.handlers[type];
+      if (fns) {
         this.makeQueue(fns, inEvent);
       }
       this.handledEvents.set(inEvent, true);
@@ -135,6 +129,8 @@
   };
   dispatcher.boundHandler = dispatcher.eventHandler.bind(dispatcher);
   scope.dispatcher = dispatcher;
+  var registerQueue = [];
+  var immediateRegister = false;
   /**
    * Enable gesture events for a given scope, typically
    * [ShadowRoots](https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html#shadow-root-object).
@@ -145,11 +141,20 @@
    * support on.
    */
   scope.register = function(inScope) {
-    var pe = window.PointerEventsPolyfill;
-    if (pe) {
-      pe.register(inScope);
+    if (immediateRegister) {
+      var pe = window.PointerEventsPolyfill;
+      if (pe) {
+        pe.register(inScope);
+      }
+      scope.dispatcher.registerTarget(inScope);
+    } else {
+      registerQueue.push(inScope);
     }
-    scope.dispatcher.registerTarget(inScope);
   };
-  dispatcher.registerTarget(document);
+  // wait to register scopes until recognizers load
+  document.addEventListener('DOMContentLoaded', function() {
+    immediateRegister = true;
+    registerQueue.push(document);
+    registerQueue.forEach(scope.register);
+  });
 })(window.PointerGestures);

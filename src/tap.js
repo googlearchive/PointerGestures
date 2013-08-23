@@ -28,7 +28,8 @@
       'pointerdown',
       'pointermove',
       'pointerup',
-      'pointercancel'
+      'pointercancel',
+      'keyup'
     ],
     pointerdown: function(inEvent) {
       if (inEvent.isPrimary && !inEvent.tapPrevented) {
@@ -67,6 +68,21 @@
     },
     pointercancel: function(inEvent) {
       pointermap.delete(inEvent.pointerId);
+    },
+    keyup: function(inEvent) {
+      var code = inEvent.keyCode;
+      // 32 == spacebar
+      if (code === 32) {
+        var t = inEvent.target;
+        if (!(t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement)) {
+          dispatcher.dispatchEvent(dispatcher.makeEvent('tap', {
+            x: 0,
+            y: 0,
+            detail: 0,
+            pointerType: 'unavailable'
+          }), t);
+        }
+      }
     },
     preventTap: function(inPointerId) {
       pointermap.delete(inPointerId);
