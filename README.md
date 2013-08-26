@@ -4,6 +4,8 @@
 PointerGestures uses PointerEvents to make useful gestures for application
 development.
 
+[![Build status](http://www.polymer-project.org/build/PointerGestures/status.png "Build status")](http://build.chromium.org/p/client.polymer/waterfall)
+
 ## Events
 
 Included events are:
