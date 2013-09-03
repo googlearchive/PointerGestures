@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-karma');
 
   var os = require('os').type();
@@ -23,6 +23,23 @@ module.exports = function(grunt) {
         src: grunt.file.readJSON('build.json')
       }
     },
+    yuidoc: {
+      compile: {
+        name: '<%= pkg.name %>',
+        description: '<%= pkg.description %>',
+        version: '<%= pkg.version %>',
+        url: '<%= pkg.homepage %>',
+        options: {
+          exclude: 'docs,third_party',
+          extension: '.js,.html',
+          paths: '.',
+          outdir: 'docs',
+          linkNatives: 'true',
+          tabtospace: 2,
+          themedir: 'tools/doc/themes/bootstrap'
+        }
+      }
+    },
     karma: {
       options: {
         browsers: browsers,
@@ -38,10 +55,11 @@ module.exports = function(grunt) {
         browsers: "BrowserStack:IE:Win"
       }
     },
-    clean: ['build', 'docs']
+    pkg: grunt.file.readJSON('package.json')
   });
 
   grunt.registerTask('default', 'uglify');
+  grunt.registerTask('docs', 'yuidoc');
   grunt.registerTask('test', 'karma:polymer');
   grunt.registerTask('test-buildbot', 'karma:buildbot');
 };

@@ -7,25 +7,35 @@
 /**
  * This event is fired when a pointer is held down for 200ms.
  *
- * @for Events
- * @event hold
- * @param {Number} holdTime Milliseconds pointer has been held down.
- * @param {String} pointerType Type of pointer that made the holding event.
+ * @module PointerGestures
+ * @submodule Events
+ * @class hold
+ */
+/**
+ * Milliseconds pointer has been held down.
+ * @type Number
+ * @property holdTime
+ */
+/**
+ * Type of pointer that made the holding event.
+ * @type String
+ * @property pointerType
  */
 /**
  * This event is fired every 200ms while a pointer is held down.
  *
- * @for Events
- * @event holdpulse
- * @param {Number} holdTime Milliseconds pointer has been held down.
- * @param {String} pointerType Type of pointer that made the holding event.
+ * @class holdpulse
+ * @extends hold
  */
 /**
  * This event is fired when a held pointer is released or moved.
  *
- * @for Events
- * @event released
- * @param {String} pointerType Type of pointer that made the holding event.
+ * @class released
+ */
+/**
+ * Type of pointer that made the holding event.
+ * @type String
+ * @property pointerType
  */
 
 (function(scope) {

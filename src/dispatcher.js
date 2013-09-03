@@ -137,7 +137,7 @@
    *
    * @for PointerGestures
    * @method register
-   * @param {ShadowRoot} inScope A top level scope to enable gesture
+   * @param {ShadowRoot} scope A top level scope to enable gesture
    * support on.
    */
   scope.register = function(inScope) {

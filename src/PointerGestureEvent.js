@@ -7,6 +7,7 @@
 /**
  * PointerGestureEvent is the constructor for all PointerGesture events.
  *
+ * @module PointerGestures
  * @class PointerGestureEvent
  * @extends UIEvent
  * @constructor

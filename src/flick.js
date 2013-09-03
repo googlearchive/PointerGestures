@@ -9,16 +9,41 @@
  *
  * The event is sent to the first element the pointer went down on.
  *
- * @for Events
- * @event flick
- * @param {Number} xVelocity Signed velocity of the flick in the x direction.
- * @param {Number} yVelocity Signed velocity of the flick in the y direction.
- * @param {Number} velocity Unsigned total velocity of the flick.
- * @param {Number} angle Angle of the flick in degrees, with 0 along the
+ * @module PointerGestures
+ * @submodule Events
+ * @class flick
+ */
+/**
+ * Signed velocity of the flick in the x direction.
+ * @property xVelocity
+ * @type Number
+ */
+/**
+ * Signed velocity of the flick in the y direction.
+ * @type Number
+ * @property yVelocity
+ */
+/**
+ * Unsigned total velocity of the flick.
+ * @type Number
+ * @property velocity
+ */
+/**
+ * Angle of the flick in degrees, with 0 along the
  * positive x axis.
- * @param {String} majorAxis Axis with the greatest absolute velocity. Denoted
+ * @type Number
+ * @property angle
+ */
+/**
+ * Axis with the greatest absolute velocity. Denoted
  * with 'x' or 'y'.
- * @param {String} pointerType Type of the pointer that made the flick.
+ * @type String
+ * @property majorAxis
+ */
+/**
+ * Type of the pointer that made the flick.
+ * @type String
+ * @property pointerType
  */
 
 (function(scope) {

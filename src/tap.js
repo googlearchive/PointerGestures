@@ -14,11 +14,24 @@
  * Any pointer event can prevent the tap by setting the `tapPrevented` property
  * on itself.
  *
- * @for Events
- * @event tap
- * @param {Number} x X axis position of the tap.
- * @param {Number} y Y axis position of the tap.
- * @param {String} pointerType Type of the pointer that made the tap.
+ * @module PointerGestures
+ * @submodule Events
+ * @class tap
+ */
+/**
+ * X axis position of the tap.
+ * @property x
+ * @type Number
+ */
+/**
+ * Y axis position of the tap.
+ * @property y
+ * @type Number
+ */
+/**
+ * Type of the pointer that made the tap.
+ * @property pointerType
+ * @type String
  */
 (function(scope) {
   var dispatcher = scope.dispatcher;
