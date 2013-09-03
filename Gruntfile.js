@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         version: '<%= pkg.version %>',
         url: '<%= pkg.homepage %>',
         options: {
-          exclude: 'docs,third_party',
+          exclude: 'docs,third_party,node_modules,tools,tests',
           extension: '.js,.html',
           paths: '.',
           outdir: 'docs',
