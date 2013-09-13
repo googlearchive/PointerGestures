@@ -35,7 +35,7 @@
   }
 
   if (!window.PolymerLoader) {
-    var path = basePath + 'tools/loader/loader.js';
+    var path = basePath + '../tools/loader/loader.js';
     document.write('<script src="' + path + '"></script>');
   }
   document.write('<script>PolymerLoader.load("' + scopeName + '")</script>');
