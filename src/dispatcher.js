@@ -6,8 +6,8 @@
 
 (function(scope) {
   var dispatcher = {
-    handledEvents: new SideTable,
-    targets: new SideTable,
+    handledEvents: new WeakMap,
+    targets: new WeakMap,
     handlers: {},
     recognizers: {},
     events: {},

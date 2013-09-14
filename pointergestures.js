@@ -12,7 +12,7 @@
   var modules = [
     'src/PointerGestureEvent.js',
     'src/initialize.js',
-    'src/sidetable.js',
+    '../WeakMap/weakmap.js',
     'src/pointermap.js',
     'src/dispatcher.js',
     'src/hold.js',

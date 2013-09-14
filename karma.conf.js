@@ -21,7 +21,7 @@ module.exports = function(karma) {
       'PointerEvents/src/capture.js',
       'PointerGestures/src/PointerGestureEvent.js',
       'PointerGestures/src/initialize.js',
-      'PointerGestures/src/sidetable.js',
+      'WeakMap/weakmap.js',
       'PointerGestures/src/pointermap.js',
       'PointerGestures/src/dispatcher.js',
       'PointerGestures/src/hold.js',
