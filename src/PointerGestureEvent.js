@@ -19,20 +19,17 @@ function PointerGestureEvent(inType, inDict) {
   var dict = inDict || {};
   var e = document.createEvent('Event');
   var props = {
-    bubbles: true,
-    cancelable: true,
+    bubbles: Boolean(dict.bubbles) === dict.bubbles || true,
+    cancelable: Boolean(dict.cancelable) === dict.cancelable || true
   };
-  Object.keys(props).forEach(function(k) {
-    if (k in dict) {
-      props[k] = dict[k];
-    }
-  });
 
   e.initEvent(inType, props.bubbles, props.cancelable);
 
-  Object.keys(dict).forEach(function(k) {
-    e[k] = inDict[k];
-  });
+  var keys = Object.keys(dict), k;
+  for (var i = 0; i < keys.length; i++) {
+    k = keys[i];
+    e[k] = dict[k];
+  }
 
   e.preventTap = this.preventTap;
 
