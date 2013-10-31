@@ -77,6 +77,11 @@
  * @property trackInfo
  */
 /**
+ * The element currently under the pointer.
+ * @type Element
+ * @property relatedTarget
+ */
+/**
  * The type of pointer that make the track gesture.
  * @type String
  * @property pointerType
@@ -97,7 +102,7 @@
 
  (function(scope) {
    var dispatcher = scope.dispatcher;
-   var pointermap = new scope.PointerMap;
+   var pointermap = new scope.PointerMap();
    var track = {
      events: [
        'pointerdown',
@@ -141,13 +146,9 @@
          xDirection: t.xDirection,
          yDirection: t.yDirection,
          trackInfo: t.trackInfo,
+         relatedTarget: inEvent.target,
          pointerType: inEvent.pointerType
        };
-       if (inType === 'trackend') {
-         // TODO(dfreedman): this will leak shadowdom targets, replace with a
-         // more sophisticated mechanism
-         trackData._releaseTarget = inEvent.target;
-       }
        var e = dispatcher.makeEvent(inType, trackData);
        t.lastMoveEvent = inEvent;
        dispatcher.dispatchEvent(e, t.downTarget);
