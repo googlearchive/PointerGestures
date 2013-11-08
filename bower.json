@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "PointerEvents": "Polymer/PointerEvents#master",
-    "WeakMap": "Polymer/WeakMap#master"
+    "WeakMap": "Polymer/WeakMap"
   },
   "license": "BSD",
   "private": true,
