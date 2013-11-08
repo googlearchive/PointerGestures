@@ -12,8 +12,8 @@
     "gestures"
   ],
   "dependencies": {
-    "PointerEvents": "Polymer/PointerEvents",
-    "WeakMap": "Polymer/WeakMap"
+    "PointerEvents": "Polymer/PointerEvents#master",
+    "WeakMap": "Polymer/WeakMap#master"
   },
   "license": "BSD",
   "private": true,
