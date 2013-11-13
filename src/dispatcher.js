@@ -41,6 +41,7 @@
     'screenY',
     'pageX',
     'pageY',
+    'tapPrevented'
   ];
 
   var CLONE_DEFAULTS = [

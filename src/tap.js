@@ -35,7 +35,7 @@
  */
 (function(scope) {
   var dispatcher = scope.dispatcher;
-  var pointermap = new scope.PointerMap;
+  var pointermap = new scope.PointerMap();
   var tap = {
     events: [
       'pointerdown',
