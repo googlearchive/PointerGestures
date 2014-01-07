@@ -1,64 +1,64 @@
 /*
- * Copyright 2012 The Polymer Authors. All rights reserved.
+ * Copyright 2013 The Polymer Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style
  * license that can be found in the LICENSE file.
  */
 
-// This module implements an ordered list of pointer states.
-//
-// Each pointer object here has two properties:
-//   - id: the id of the pointer
-//   - event: the source event of the pointer, complete with positions
-//
-// The ordering of the pointers is from oldest pointer to youngest pointer,
-// which allows for multi-pointer gestures to not rely on the actual ids
-// imported from the source events.
-//
-// Any operation that needs to store state information about pointers can hang
-// objects off of the pointer in the pointermap. This information will be
-// preserved until the pointer is removed from the pointermap.
-
+/**
+ * This module implements an map of pointer states
+ */
 (function(scope) {
+  var USE_MAP = window.Map && window.Map.prototype.forEach;
+  var POINTERS_FN = function(){ return this.size; };
   function PointerMap() {
-    this.ids = [];
-    this.pointers = [];
-  };
+    if (USE_MAP) {
+      var m = new Map();
+      m.pointers = POINTERS_FN;
+      return m;
+    } else {
+      this.keys = [];
+      this.values = [];
+    }
+  }
 
   PointerMap.prototype = {
     set: function(inId, inEvent) {
-      var i = this.ids.indexOf(inId);
+      var i = this.keys.indexOf(inId);
       if (i > -1) {
-        this.pointers[i] = inEvent;
+        this.values[i] = inEvent;
       } else {
-        this.ids.push(inId);
-        this.pointers.push(inEvent);
+        this.keys.push(inId);
+        this.values.push(inEvent);
       }
     },
     has: function(inId) {
-      return this.ids.indexOf(inId) > -1;
+      return this.keys.indexOf(inId) > -1;
     },
     'delete': function(inId) {
-      var i = this.ids.indexOf(inId);
+      var i = this.keys.indexOf(inId);
       if (i > -1) {
-        this.ids.splice(i, 1);
-        this.pointers.splice(i, 1);
+        this.keys.splice(i, 1);
+        this.values.splice(i, 1);
       }
     },
     get: function(inId) {
-      var i = this.ids.indexOf(inId);
-      return this.pointers[i];
-    },
-    get size() {
-      return this.pointers.length;
+      var i = this.keys.indexOf(inId);
+      return this.values[i];
     },
     clear: function() {
-      this.ids.length = 0;
-      this.pointers.length = 0;
+      this.keys.length = 0;
+      this.values.length = 0;
+    },
+    // return value, key, map
+    forEach: function(callback, thisArg) {
+      this.values.forEach(function(v, i) {
+        callback.call(thisArg, v, this.keys[i], this);
+      }, this);
+    },
+    pointers: function() {
+      return this.keys.length;
     }
   };
 
-  if (window.Map) {
-    PointerMap = window.Map;
-  }
   scope.PointerMap = PointerMap;
 })(window.PointerGestures);
