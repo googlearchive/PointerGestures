@@ -47,17 +47,21 @@
     pointercancel: function(ev) {
       this.pointerup(ev);
     },
-    dispatchPinch: function(diameter, target) {
+    dispatchPinch: function(diameter, points) {
       var zoom = diameter / this.reference.diameter;
       var ev = dispatcher.makeEvent('pinch', {
-        scale: zoom
+        scale: zoom,
+        centerX: points.center.x,
+        centerY: points.center.y
       });
       dispatcher.dispatchEvent(ev, this.reference.target);
     },
-    dispatchRotate: function(angle) {
+    dispatchRotate: function(angle, points) {
       var diff = Math.round((angle - this.reference.angle) % 360);
       var ev = dispatcher.makeEvent('rotate', {
-        angle: diff
+        angle: diff,
+        centerX: points.center.x,
+        centerY: points.center.y
       });
       dispatcher.dispatchEvent(ev, this.reference.target);
     },
@@ -66,10 +70,10 @@
       var diameter = points.diameter;
       var angle = this.calcAngle(points);
       if (diameter != this.reference.diameter) {
-        this.dispatchPinch(diameter);
+        this.dispatchPinch(diameter, points);
       }
       if (angle != this.reference.angle) {
-        this.dispatchRotate(angle);
+        this.dispatchRotate(angle, points);
       }
     },
     calcChord: function() {
@@ -93,8 +97,8 @@
           }
         }
       }
-      x = Math.abs(points.a.clientX - points.b.clientX / 2);
-      y = Math.abs(points.a.clientY - points.b.clientY / 2);
+      x = Math.abs(points.a.clientX + points.b.clientX) / 2;
+      y = Math.abs(points.a.clientY + points.b.clientY) / 2;
       points.center = { x: x, y: y };
       points.diameter = dist;
       return points;
