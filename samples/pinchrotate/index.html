@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pinch Zoom Sample</title>
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      position: relative;
+    }
+    body {
+      overflow: auto;
+    }
+    #box {
+      height: 100px;
+      width: 100px;
+      margin: -50px;
+      background: gray;
+    }
+  </style>
+  <script src="../../pointergestures.js"></script>
+</head>
+<body touch-action="none">
+  <div id="box" touch-action="none"></div>
+  <script>
+    var zoom = 1;
+    var angle = 0;
+    var x = 0, y = 0;
+
+    document.addEventListener('pinch', function(e) {
+      zoom = e.scale;
+      x = e.centerX;
+      y = e.centerY;
+    });
+    document.addEventListener('rotate', function(e) {
+      angle = e.angle;
+      x = e.centerX;
+      y = e.centerY;
+    });
+
+    function draw() {
+      var trans = 'translate(' + Math.floor(x) + 'px, ' + Math.floor(y) + 'px) scale(' + zoom.toFixed(2) + ') rotate(' + angle.toFixed(1) + 'deg)';
+      box.style.webkitTransform = box.style.transform = trans;
+      requestAnimationFrame(draw);
+    };
+
+    requestAnimationFrame(draw);
+
+  </script>
+</body>
+</html>
