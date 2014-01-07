@@ -9,6 +9,47 @@
  * react to size change and rotation of the chord
  */
 
+/**
+ * @module PointerGestures
+ * @submodule Events
+ * @class pinch
+ */
+/**
+ * Scale of the pinch zoom gesture
+ * @property scale
+ * @type Number
+ */
+/**
+ * Center X position of pointers causing pinch
+ * @property centerX
+ * @type Number
+ */
+/**
+ * Center Y position of pointers causing pinch
+ * @property centerY
+ * @type Number
+ */
+
+/**
+ * @module PointerGestures
+ * @submodule Events
+ * @class rotate
+ */
+/**
+ * Angle (in degrees) of rotation. Measured from starting positions of pointers.
+ * @property angle
+ * @type Number
+ */
+/**
+ * Center X position of pointers causing rotation
+ * @property centerX
+ * @type Number
+ */
+/**
+ * Center Y position of pointers causing rotation
+ * @property centerY
+ * @type Number
+ */
 (function(scope) {
   var dispatcher = scope.dispatcher;
   var pointermap = new scope.PointerMap();
