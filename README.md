@@ -21,6 +21,8 @@ Included events are:
   received `trackstart`
 - `trackend` - a primary pointer has been released, targets the element that
   received `trackstart`
+- `pinch` - Two pointers are pinching in and out
+- `rotate` - Two pointers are rotating around a center point
 
 ## Installation
 
