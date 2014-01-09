@@ -22,21 +22,27 @@
   <script src="../../pointergestures.js"></script>
 </head>
 <body touch-action="none">
-  <div id="box" touch-action="none"></div>
+  <div id="box"></div>
   <script>
     var zoom = 1;
     var angle = 0;
-    var x = 0, y = 0;
+    var x = innerWidth / 2, y = innerHeight / 2;
 
     document.addEventListener('pinch', function(e) {
       zoom = e.scale;
       x = e.centerX;
       y = e.centerY;
     });
+
     document.addEventListener('rotate', function(e) {
       angle = e.angle;
       x = e.centerX;
       y = e.centerY;
+    });
+
+    // prevent forward/back ChromeOS gestures
+    document.addEventListener('pointerdown', function(e) {
+      e.preventDefault();
     });
 
     function draw() {
@@ -45,8 +51,7 @@
       requestAnimationFrame(draw);
     };
 
-    requestAnimationFrame(draw);
-
+    draw();
   </script>
 </body>
 </html>
