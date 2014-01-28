@@ -10,6 +10,7 @@ module.exports = function(grunt) {
           banner: grunt.file.read('LICENSE'),
           sourceMap: 'pointergestures.js.map',
         },
+        nonull: true,
         dest: 'pointergestures.min.js',
         src: grunt.file.readJSON('build.json')
       }
