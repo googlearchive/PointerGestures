@@ -63,9 +63,15 @@
         }
       }
     },
+    shouldTap: function(e) {
+      if (!e.tapPrevented) {
+        // only allow left click to tap for mouse
+        return e.pointerType === 'mouse' ? e.buttons === 1 : true;
+      }
+    },
     pointerup: function(inEvent) {
       var start = pointermap.get(inEvent.pointerId);
-      if (start && !inEvent.tapPrevented) {
+      if (start && this.shouldTap(inEvent)) {
         var t = scope.findLCA(start.target, inEvent.target);
         if (t) {
           var e = dispatcher.makeEvent('tap', {
