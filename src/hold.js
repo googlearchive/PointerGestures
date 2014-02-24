@@ -12,9 +12,19 @@
  * @class hold
  */
 /**
- * Milliseconds pointer has been held down.
+ * Type of pointer that made the holding event.
+ * @type String
+ * @property pointerType
+ */
+/**
+ * Screen X axis position of the held pointer
  * @type Number
- * @property holdTime
+ * @property clientX
+ */
+/**
+ * Screen Y axis position of the held pointer
+ * @type Number
+ * @property clientY
  */
 /**
  * Type of pointer that made the holding event.
@@ -28,14 +38,14 @@
  * @extends hold
  */
 /**
+ * Milliseconds pointer has been held down.
+ * @type Number
+ * @property holdTime
+ */
+/**
  * This event is fired when a held pointer is released or moved.
  *
  * @class released
- */
-/**
- * Type of pointer that made the holding event.
- * @type String
- * @property pointerType
  */
 
 (function(scope) {
@@ -95,7 +105,9 @@
     },
     fireHold: function(inType, inHoldTime) {
       var p = {
-        pointerType: this.heldPointer.pointerType
+        pointerType: this.heldPointer.pointerType,
+        clientX: this.heldPointer.clientX,
+        clientY: this.heldPointer.clientY
       };
       if (inHoldTime) {
         p.holdTime = inHoldTime;
