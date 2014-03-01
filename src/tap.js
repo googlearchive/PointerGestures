@@ -48,6 +48,7 @@
       if (inEvent.isPrimary && !inEvent.tapPrevented) {
         pointermap.set(inEvent.pointerId, {
           target: inEvent.target,
+          buttons: inEvent.buttons,
           x: inEvent.clientX,
           y: inEvent.clientY
         });
@@ -63,15 +64,19 @@
         }
       }
     },
-    shouldTap: function(e) {
+    shouldTap: function(e, downState) {
       if (!e.tapPrevented) {
-        // only allow left click to tap for mouse
-        return e.pointerType === 'mouse' ? e.buttons === 1 : true;
+        if (e.pointerType === 'mouse') {
+          // only allow left click to tap for mouse
+          return downState.buttons === 1;
+        } else {
+          return true;
+        }
       }
     },
     pointerup: function(inEvent) {
       var start = pointermap.get(inEvent.pointerId);
-      if (start && this.shouldTap(inEvent)) {
+      if (start && this.shouldTap(inEvent, start)) {
         var t = scope.findLCA(start.target, inEvent.target);
         if (t) {
           var e = dispatcher.makeEvent('tap', {
