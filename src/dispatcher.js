@@ -206,9 +206,11 @@
     }
   };
   dispatcher.boundHandler = dispatcher.eventHandler.bind(dispatcher);
+  // recognizers call into the dispatcher and load later
+  // solve the chicken and egg problem by having registerScopes module run last
+  dispatcher.registerQueue = [];
+  dispatcher.immediateRegister = false;
   scope.dispatcher = dispatcher;
-  var registerQueue = [];
-  var immediateRegister = false;
   /**
    * Enable gesture events for a given scope, typically
    * [ShadowRoots](https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html#shadow-root-object).
@@ -219,20 +221,15 @@
    * support on.
    */
   scope.register = function(inScope) {
-    if (immediateRegister) {
+    if (dispatcher.immediateRegister) {
       var pe = window.PointerEventsPolyfill;
       if (pe) {
         pe.register(inScope);
       }
       scope.dispatcher.registerTarget(inScope);
     } else {
-      registerQueue.push(inScope);
+      dispatcher.registerQueue.push(inScope);
     }
   };
-  // wait to register scopes until recognizers load
-  document.addEventListener('DOMContentLoaded', function() {
-    immediateRegister = true;
-    registerQueue.push(document);
-    registerQueue.forEach(scope.register);
-  });
+  scope.register(document);
 })(window.PointerGestures);
