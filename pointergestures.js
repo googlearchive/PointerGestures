@@ -19,7 +19,8 @@
     'src/track.js',
     'src/flick.js',
     'src/pinch.js',
-    'src/tap.js'
+    'src/tap.js',
+    'src/registerScopes.js'
   ];
 
   window[scopeName] = {
