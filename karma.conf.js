@@ -27,6 +27,7 @@ module.exports = function(karma) {
       'PointerGestures/src/track.js',
       'PointerGestures/src/flick.js',
       'PointerGestures/src/tap.js',
+      'PointerGestures/src/registerScopes.js',
       'PointerGestures/tests/setup.js',
       'PointerGestures/tests/!(setup).js'
     ]

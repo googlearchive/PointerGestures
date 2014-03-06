@@ -9,7 +9,7 @@ suite('Tap', function() {
     if (document.readyState === 'complete') {
       fireTap();
     } else {
-      document.addEventListener('DOMContentLoaded', fireTap);
+      addEventListener('load', fireTap);
     }
   });
 });
