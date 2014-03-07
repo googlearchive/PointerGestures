@@ -123,7 +123,8 @@
         pointers.push(p);
       });
       var dist = 0;
-      var points = {};
+      // start with at least two pointers
+      var points = {a: pointers[0], b: pointers[1]};
       var x, y, d;
       for (var i = 0; i < pointers.length; i++) {
         var a = pointers[i];
