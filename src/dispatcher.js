@@ -132,7 +132,7 @@
       // must clone events to keep the (possibly shadowed) target correct for
       // async dispatching
       var e = this.cloneEvent(inEvent);
-      setTimeout(this.runQueue.bind(this, inHandlerFns, e), 0);
+      requestAnimationFrame(this.runQueue.bind(this, inHandlerFns, e));
     },
     // Dispatch the queued events
     runQueue: function(inHandlers, inEvent) {
@@ -193,10 +193,7 @@
       }
     },
     asyncDispatchEvent: function(inEvent, inTarget) {
-      var fn = function() {
-        this.dispatchEvent(inEvent, inTarget);
-      }.bind(this);
-      setTimeout(fn, 0);
+      requestAnimationFrame(this.dispatchEvent.bind(this, inEvent, inTarget));
     },
     preventTap: function(inPointerId) {
       var t = this.recognizers.tap;
