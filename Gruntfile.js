@@ -1,9 +1,22 @@
 module.exports = function(grunt) {
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-karma');
 
+  var sourceFiles = grunt.file.readJSON('build.json');
   grunt.initConfig({
+    concat: {
+      pointergestures: {
+        options: {
+          stripBanners: true,
+          banner: grunt.file.read('LICENSE')
+        },
+        nonull: true,
+        src: sourceFiles,
+        dest: 'pointergestures.dev.js'
+      }
+    },
     uglify: {
       pointergestures: {
         options: {
@@ -12,7 +25,7 @@ module.exports = function(grunt) {
         },
         nonull: true,
         dest: 'pointergestures.min.js',
-        src: grunt.file.readJSON('build.json')
+        src: sourceFiles
       }
     },
     yuidoc: {
@@ -46,7 +59,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json')
   });
 
-  grunt.registerTask('default', 'uglify');
+  grunt.registerTask('default', ['concat', 'uglify']);
   grunt.registerTask('docs', 'yuidoc');
   grunt.registerTask('test', 'karma:polymer');
   grunt.registerTask('test-buildbot', 'karma:buildbot');
