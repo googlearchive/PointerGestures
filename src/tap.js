@@ -83,7 +83,8 @@
             x: inEvent.clientX,
             y: inEvent.clientY,
             detail: inEvent.detail,
-            pointerType: inEvent.pointerType
+            pointerType: inEvent.pointerType,
+            pointerId: inEvent.pointerId
           });
           dispatcher.dispatchEvent(e, t);
         }

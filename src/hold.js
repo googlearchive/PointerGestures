@@ -107,7 +107,8 @@
       var p = {
         pointerType: this.heldPointer.pointerType,
         clientX: this.heldPointer.clientX,
-        clientY: this.heldPointer.clientY
+        clientY: this.heldPointer.clientY,
+        pointerId: this.heldPointer.pointerId
       };
       if (inHoldTime) {
         p.holdTime = inHoldTime;

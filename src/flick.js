@@ -116,7 +116,8 @@
           velocity: v,
           angle: a,
           majorAxis: ma,
-          pointerType: inEvent.pointerType
+          pointerType: inEvent.pointerType,
+          pointerId: inEvent.pointerId
         });
         dispatcher.dispatchEvent(ev, this.target);
       }
