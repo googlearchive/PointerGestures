@@ -147,7 +147,8 @@
          yDirection: t.yDirection,
          trackInfo: t.trackInfo,
          relatedTarget: inEvent.target,
-         pointerType: inEvent.pointerType
+         pointerType: inEvent.pointerType,
+         pointerId: inEvent.pointerId
        };
        var e = dispatcher.makeEvent(inType, trackData);
        t.lastMoveEvent = inEvent;
