@@ -105,9 +105,11 @@
     },
     fireHold: function(inType, inHoldTime) {
       var p = {
-        pointerType: this.heldPointer.pointerType,
         clientX: this.heldPointer.clientX,
         clientY: this.heldPointer.clientY,
+        x: this.heldPointer.clientX,
+        y: this.heldPointer.clientY,
+        pointerType: this.heldPointer.pointerType,
         pointerId: this.heldPointer.pointerId
       };
       if (inHoldTime) {
