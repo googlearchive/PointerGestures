@@ -93,7 +93,8 @@
       var ev = dispatcher.makeEvent('pinch', {
         scale: zoom,
         centerX: points.center.x,
-        centerY: points.center.y
+        centerY: points.center.y,
+        pointerId: [points.a.pointerId, points.b.pointerId]
       });
       dispatcher.dispatchEvent(ev, this.reference.target);
     },
@@ -102,7 +103,8 @@
       var ev = dispatcher.makeEvent('rotate', {
         angle: diff,
         centerX: points.center.x,
-        centerY: points.center.y
+        centerY: points.center.y,
+        pointerId: [points.a.pointerId, points.b.pointerId]
       });
       dispatcher.dispatchEvent(ev, this.reference.target);
     },
